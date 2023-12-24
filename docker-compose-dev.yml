@@ -1,0 +1,19 @@
+# Just provide postgresql 16 for development
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:16
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: sample_postgres_db
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
